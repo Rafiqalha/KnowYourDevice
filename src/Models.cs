@@ -46,7 +46,7 @@ namespace KnowYourDevice {
         public List<Category> Categories { get; set; }
         public List<SourceResult> Sources { get; set; }
         public List<string> Limitations { get; set; }
-        public Snapshot() { AppVersion="1.0.0"; Categories=new List<Category>(); Sources=new List<SourceResult>(); Limitations=new List<string>(); }
+        public Snapshot() { AppVersion="2.0.0"; Categories=new List<Category>(); Sources=new List<SourceResult>(); Limitations=new List<string>(); }
         public Category Find(string id) { return Categories.FirstOrDefault(c => c.Id==id); }
         public string FirstValue(string id, string label) {
             var c=Find(id); if(c==null) return Format.Unknown;

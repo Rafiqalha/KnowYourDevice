@@ -3,3 +3,9 @@ artifacts/
 dist/
 *.user
 *.pdb
+node_modules/
+desktop/out/
+desktop/release/
+desktop/test-results/
+desktop/playwright-report/
+desktop/.cache/
