@@ -1,0 +1,74 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="KnowYourDevice — Kenali perangkatmu" Width="1320" Height="850" MinWidth="1050" MinHeight="680" WindowStartupLocation="CenterScreen" Background="#0D1119" Foreground="#EDF2FA" FontFamily="Segoe UI" FontSize="14" UseLayoutRounding="True">
+  <Window.Resources>
+    <SolidColorBrush x:Key="Muted" Color="#95A2B5"/>
+    <Style TargetType="Button">
+      <Setter Property="Foreground" Value="#EAF0F8"/><Setter Property="Background" Value="#202A39"/><Setter Property="BorderBrush" Value="#344157"/><Setter Property="BorderThickness" Value="1"/><Setter Property="Padding" Value="17,10"/><Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="bg" CornerRadius="7" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="bg" Property="Opacity" Value="0.8"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="bg" Property="BorderBrush" Value="#9BDBC2"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="bg" Property="Opacity" Value="0.4"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="NavButton" TargetType="RadioButton">
+      <Setter Property="Foreground" Value="#A8B4C6"/><Setter Property="Margin" Value="0,3"/><Setter Property="Padding" Value="14,12"/><Setter Property="Cursor" Value="Hand"/><Setter Property="GroupName" Value="Navigation"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="RadioButton"><Border x:Name="navBg" Background="Transparent" CornerRadius="7" Padding="{TemplateBinding Padding}" BorderThickness="1" BorderBrush="Transparent"><ContentPresenter/></Border><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="navBg" Property="Background" Value="#20372F"/><Setter TargetName="navBg" Property="BorderBrush" Value="#2D5244"/><Setter Property="Foreground" Value="#9EE8C9"/></Trigger><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="navBg" Property="Background" Value="#26313D"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="navBg" Property="BorderBrush" Value="#9EE8C9"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style TargetType="Expander"><Setter Property="Foreground" Value="#EDF2FA"/></Style>
+    <Style TargetType="ToolTip"><Setter Property="Background" Value="#26313D"/><Setter Property="Foreground" Value="#EDF2FA"/></Style>
+    <Style TargetType="ScrollViewer"><Setter Property="PanningMode" Value="VerticalOnly"/></Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="230"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <Border Background="#121925" BorderBrush="#263142" BorderThickness="0,0,1,0">
+      <Grid Margin="18,28,18,20">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel Margin="10,0,0,27">
+          <StackPanel Orientation="Horizontal"><Border Background="#A3E7C7" CornerRadius="7" Padding="8,4" Margin="0,0,9,0"><TextBlock Text="K" Foreground="#12251D" FontWeight="Bold" FontSize="20"/></Border><TextBlock Text="KnowYourDevice" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="16"/></StackPanel>
+          <TextBlock Text="Kenali isi perangkatmu." Foreground="{StaticResource Muted}" FontSize="12" Margin="0,12,0,0"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel>
+          <TextBlock Text="WORKSPACE" FontSize="10" Foreground="#697B94" FontWeight="Bold" Margin="14,0,0,12"/>
+          <RadioButton x:Name="NavOverview" Style="{StaticResource NavButton}" Tag="overview" IsChecked="True"><TextBlock Text="◫    Ringkasan"/></RadioButton>
+          <TextBlock Text="HARDWARE" FontSize="10" Foreground="#697B94" FontWeight="Bold" Margin="14,28,0,10"/>
+          <RadioButton x:Name="NavCpu" Style="{StaticResource NavButton}" Tag="cpu"><TextBlock Text="▣    CPU"/></RadioButton>
+          <RadioButton x:Name="NavRam" Style="{StaticResource NavButton}" Tag="ram"><TextBlock Text="▤    RAM"/></RadioButton>
+          <RadioButton x:Name="NavStorage" Style="{StaticResource NavButton}" Tag="storage"><TextBlock Text="▱    Storage"/></RadioButton>
+          <RadioButton x:Name="NavIo" Style="{StaticResource NavButton}" Tag="io"><TextBlock Text="⌘    Input / Output"/></RadioButton>
+          <RadioButton x:Name="NavPorts" Style="{StaticResource NavButton}" Tag="ports"><TextBlock Text="⇄    Port &amp; konektivitas"/></RadioButton>
+          <RadioButton x:Name="NavSystem" Style="{StaticResource NavButton}" Tag="system"><TextBlock Text="⊞    Sistem"/></RadioButton>
+          <RadioButton x:Name="NavSources" Style="{StaticResource NavButton}" Tag="sources" Margin="0,22,0,0"><TextBlock Text="ⓘ    Sumber &amp; batas deteksi" FontSize="12"/></RadioButton>
+        </StackPanel></ScrollViewer>
+        <Border Grid.Row="2" CornerRadius="9" BorderBrush="#2A3B42" BorderThickness="1" Background="#16242A" Padding="13">
+          <StackPanel><TextBlock Text="●  Lokal &amp; privat" Foreground="#A3E7C7" FontWeight="SemiBold" FontSize="12"/><TextBlock Text="Pemindaian tanpa internet.&#10;Tidak mengubah perangkat." FontSize="11" Foreground="#9CAEB6" Margin="0,6,0,0" LineHeight="18"/></StackPanel>
+        </Border>
+      </Grid>
+    </Border>
+    <Grid Grid.Column="1">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+      <Border BorderBrush="#263142" BorderThickness="0,0,0,1" Padding="30,20">
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center"><TextBlock Text="DEVICE EXPLORER" Foreground="#9CAABD" FontSize="10" FontWeight="Bold"/><TextBlock x:Name="ScanTimestamp" Text="Siap mengenali perangkat Anda" Foreground="#7F8DA1" FontSize="11" Margin="0,5,0,0"/></StackPanel>
+          <Button x:Name="ExportButton" Grid.Column="1" Content="↗  Ekspor laporan" Margin="10,0" IsEnabled="False" ToolTip="Simpan semua kategori sebagai HTML, JSON, atau CSV"/>
+          <Button x:Name="ScanButton" Grid.Column="2" Content="⟳  Pindai ulang" Background="#A3E7C7" Foreground="#10251C" BorderBrush="#A3E7C7" FontWeight="SemiBold"/>
+        </Grid>
+      </Border>
+      <Grid Grid.Row="1">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <Grid Margin="30,24,30,16"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="270"/></Grid.ColumnDefinitions>
+          <StackPanel><TextBlock x:Name="PageTitle" Text="Ringkasan perangkat" FontSize="27" FontWeight="SemiBold"/><TextBlock x:Name="PageSubtitle" Text="Spesifikasi nyata. Pembahasan yang mudah dipahami." Foreground="#95A2B5" FontSize="12" Margin="0,6,18,0" TextWrapping="Wrap"/></StackPanel>
+          <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Border Background="#171F2C" BorderBrush="#344157" BorderThickness="1" CornerRadius="7" Padding="10,8"><TextBox x:Name="SearchBox" Background="Transparent" Foreground="#EDF2FA" BorderThickness="0" CaretBrush="#A3E7C7" FontSize="12" AutomationProperties.Name="Cari perangkat atau spesifikasi" ToolTip="Cari perangkat, jenis, atau nilai spesifikasi di kategori ini"/></Border>
+            <TextBlock Text="Cari perangkat atau spesifikasi" Foreground="#7F8DA1" FontSize="10" Margin="1,4,0,0"/>
+          </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="30,0,30,16"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <TextBlock x:Name="ResultCount" Text="Menyiapkan pemindaian…" Foreground="#95A2B5" FontSize="11" VerticalAlignment="Center"/>
+          <CheckBox x:Name="PrivateToggle" Grid.Column="1" Content="Tampilkan &amp; ekspor ID pribadi" Foreground="#A6B4C6" FontSize="11" VerticalAlignment="Center" ToolTip="Menyertakan nomor seri, hardware ID, nama komputer, dan MAC. Bawaan: disembunyikan."/>
+        </Grid>
+        <ScrollViewer x:Name="ContentScroll" Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="30,0,25,24"><StackPanel x:Name="ContentHost"/></ScrollViewer>
+      </Grid>
+      <Border Grid.Row="2" Background="#121925" BorderBrush="#263142" BorderThickness="0,1,0,0" Padding="30,12">
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <TextBlock x:Name="StatusText" Text="Memulai…" Foreground="#95A2B5" FontSize="11" TextTrimming="CharacterEllipsis"/>
+          <TextBlock Grid.Column="1" Text="KnowYourDevice  /  1.0" Foreground="#63748C" FontSize="10" Margin="12,0,0,0"/>
+        </Grid>
+      </Border>
+    </Grid>
+  </Grid>
+</Window>
